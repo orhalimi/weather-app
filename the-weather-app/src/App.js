@@ -5,7 +5,8 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App container">
+        <h1 className="text-center title bold">Weather app</h1>
         <WeatherMain/>
       </div>
     );

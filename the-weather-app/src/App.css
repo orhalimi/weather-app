@@ -1,0 +1,14 @@
+.margin-top{
+  margin-top: 50px;
+}
+
+.weather-image {
+  height: 50px;
+  width:  50px;
+}
+.title{
+  color: #999999;
+}
+.bold {
+  font-weight: bold;
+}

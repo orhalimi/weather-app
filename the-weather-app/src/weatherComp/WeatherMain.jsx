@@ -36,9 +36,10 @@ class WeatherMain extends React.Component {
 
   render() {
     return (
-    <div>
-      <WeatherSelector cities={CITIES} onChange={this.handleChange}/>
-      <WeatherInfo weatherData={this.state.weatherData}/>
+    <div class="margin-top">
+      <WeatherSelector cities={CITIES} onChange={this.handleChange} className="row"/>
+      <div class="w-100"></div>
+      <WeatherInfo weatherData={this.state.weatherData} className="row margin-top"/>
     </div>
     );
   }
