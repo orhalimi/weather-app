@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const defaultValue = 'Select a City'
 const CITIES = [defaultValue,'Tel Aviv', 'Haifa', 'Ashkelon', 'Eilat', 'Rehovot']
-
+const API_ID = 'b9b5c6a68f1c7855568991f170553b0c';
 
 class WeatherMain extends React.Component {
 
@@ -20,7 +20,8 @@ class WeatherMain extends React.Component {
   handleChange(e){
     const selectedCity = e.target.value;
     if (selectedCity !== defaultValue){
-      const uri = `http://localhost:8080/weather?city=${selectedCity}`
+      const uri = 
+      `https://2rg5jl5m23.execute-api.us-west-2.amazonaws.com/orTest/orExam?city=${selectedCity}&apiKey=${API_ID}`;
       axios.get(uri)
       .then(res => {
         const weatherIcon = `http://openweathermap.org/img/w/${res.data.weatherIcon}.png`;
