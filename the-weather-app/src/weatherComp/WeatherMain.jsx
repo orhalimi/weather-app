@@ -1,5 +1,6 @@
-import React from 'react'
-import WeatherSelector from './WeatherSelector'
+import React from 'react';
+import WeatherSelector from './WeatherSelector';
+import WeatherInfo from './weatherInfo';
 import axios from 'axios';
 
 const defaultValue = 'Select a City'
@@ -10,6 +11,9 @@ class WeatherMain extends React.Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      weatherData:''
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -19,16 +23,24 @@ class WeatherMain extends React.Component {
       const uri = `http://localhost:8080/weather?city=${selectedCity}`
       axios.get(uri)
       .then(res => {
-        const weatherIcon = res.data.weatherIcon;
+        const weatherIcon = `http://openweathermap.org/img/w/${res.data.weatherIcon}.png`;
         const weather = res.data.weather;
-        console.log(weatherIcon,weather);
+        this.setState({
+          weatherData:{
+            city:selectedCity, weather, weatherIcon}
+        });
       });
      
     }
   }
 
   render() {
-    return <WeatherSelector cities={CITIES} onChange={this.handleChange}/>
+    return (
+    <div>
+      <WeatherSelector cities={CITIES} onChange={this.handleChange}/>
+      <WeatherInfo weatherData={this.state.weatherData}/>
+    </div>
+    );
   }
 
 }
