@@ -20,9 +20,12 @@ server.get('/weather', function (req, res) {
     });
     apiRes.on("end", () => {
       body = JSON.parse(body);
-      console.log(
-        body
-      );
+      const weather = body.main.temp;
+      const weatherIcon = body.weather[0].icon;
+      console.log(weather,weatherIcon);
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200);
+      res.end(JSON.stringify({weather,weatherIcon }));
     });
   });
 });

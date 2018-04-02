@@ -17,15 +17,13 @@ class WeatherMain extends React.Component {
     const selectedCity = e.target.value;
     if (selectedCity !== defaultValue){
       const uri = `http://localhost:8080/weather?city=${selectedCity}`
-      axios.get(uri);
-      // const uri = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity},IL&APPID=${API_ID}&units=metric`;
-      // axios.get(uri)
-      // .then(res => {
-      //   const weather = res.data.main.temp;
-      //   const weatherIcon = res.data.weather[0].icon;
-      //   const weatherIconURL = `http://openweathermap.org/img/w/${weatherIcon}  .png`
-      //   console.log(weather,weatherIcon);
-      //});
+      axios.get(uri)
+      .then(res => {
+        const weatherIcon = res.data.weatherIcon;
+        const weather = res.data.weather;
+        console.log(weatherIcon,weather);
+      });
+     
     }
   }
 
@@ -36,3 +34,14 @@ class WeatherMain extends React.Component {
 }
 
 export default WeatherMain;
+
+
+
+ // const uri = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity},IL&APPID=${API_ID}&units=metric`;
+      // axios.get(uri)
+      // .then(res => {
+      //   const weather = res.data.main.temp;
+      //   const weatherIcon = res.data.weather[0].icon;
+      //   const weatherIconURL = `http://openweathermap.org/img/w/${weatherIcon}  .png`
+      //   console.log(weather,weatherIcon);
+      //});
